@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>     MATCHMAKER WEB 2020 - WIN TYLER'S HEART</title>
+</head>
+<p>♡〜٩(^▿^)۶〜♡</p>
+<p>(♡´❍`♡)*✧ ✰ ｡*</p>
+<br>
+
+
+
+<!--
+
+    Author: Tyler Quinn
+    Project: MatchmakerWeb2020
+
+
+    All rights reserved.
+
+
+-->
+
+
+<body>
+<body style="background-color:linen;">
+
+    <style>
+    .Intro{
+        background-color: lavenderblush;
+        border: 4px solid white;
+    }
+
+    </style>
+
+    <div class='Intro'>
+    <h1>MATCHMAKER WEB 2020 - WIN TYLER'S HEART</h1>
+
+    <br>
+    <h3>INSTRUCTIONS</h3>
+    <p>The following code determines whether you and Tyler are compatible matches.</p>
+    <p>There are 5 statements to respond to.</p>
+    <p>For each statement, open the drop-down box and select a number representing your level of agreeance with the statement.</p>
+    <p>A total weighted compatibility score will be calculated when the 'calculate compatibility' button is clicked.</p>
+    <p>A score of 100 out of 100 makes you the ideal pairing ♡</p>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br /> <!-- Separating the instructions from the questions -->
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+<!-- Identifying question 1 -->
+    <label>Horror is the best film genre.</label>
+
+    <select id='question-01'>
+        <option value='1'>Strongly Disagree</option>
+        <option value='2'>Disagree</option>
+        <option value='3'>Indifferent</option>
+        <option value='4'>Agree</option>
+        <option value='5'>Strongly Agree</option>
+    </select>
+
+
+<br />
+<br />
+
+
+<!-- Identifying question 2 -->
+    <label>After Effects is the best Adobe application.</label>
+
+    <select id='question-02'>
+        <option value='1'>Strongly Disagree</option>
+        <option value='2'>Disagree</option>
+        <option value='3'>Indifferent</option>
+        <option value='4'>Agree</option>
+        <option value='5'>Strongly Agree</option>
+    </select>
+
+    <br />
+    <br />
+
+<!-- Identifying question 3 -->
+    <label>Leonardo DiCaprio is a better actor than Christian Bale.</label>
+
+    <select id='question-03'>
+        <option value='1'>Strongly Disagree</option>
+        <option value='2'>Disagree</option>
+        <option value='3'>Indifferent</option>
+        <option value='4'>Agree</option>
+        <option value='5'>Strongly Agree</option>
+    </select>
+
+
+    <br />
+    <br />
+<!-- Identifying question 4 -->
+    <label>Art is important.</label>
+
+    <select id='question-04'>
+        <option value='1'>Strongly Disagree</option>
+        <option value='2'>Disagree</option>
+        <option value='3'>Indifferent</option>
+        <option value='4'>Agree</option>
+        <option value='5'>Strongly Agree</option>
+    </select>
+
+    <br />
+    <br />
+<!-- Identifying question 5 -->
+    <label>Parasite deserved its best picture Oscar win in 2019</label>
+
+    <select id='question-05'>
+        <option value='1'>Strongly Disagree</option>
+        <option value='2'>Disagree</option>
+        <option value='3'>Indifferent</option>
+        <option value='4'>Agree</option>
+        <option value='5'>Strongly Agree</option>
+    </select>
+
+    <br />
+    <br />
+
+
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <button onclick = 'calculateCompatibility()'>Calculate Compatibility</button>
+    <p id='compatibility'> </p>
+
+
+
+
+<!-- This marks the start of JavaScript code -->
+    <script>
+
+    console.log('Starting Matchmaker Lite...');
+        
+        
+    function calculateCompatibility() {
+        console.log('calculateCompatibility()');
+        
+        
+        //Making Constants 
+
+
+        //Constant of desired responses
+        const DESIRED_RESPONSE = [
+            2, /* disagree fixed */
+            5, /* strongly agree fixed*/
+            2, /* disagree fixed*/
+            5, /* strongly agree fixed*/
+            5, /*strongly agree fixed*/
+        ]
+        
+
+        //Constant of maximum score (5 times 5)
+        const MAXIMUM_SCORE = 25; 
+
+
+
+
+         //Identifying dropdown values
+        let question1Response = document.getElementById('question-01').selectedOptions[0].value;
+        let question2Response = document.getElementById('question-02').selectedOptions[0].value;
+        let question3Response = document.getElementById('question-03').selectedOptions[0].value;
+        let question4Response = document.getElementById('question-04').selectedOptions[0].value;
+        let question5Response = document.getElementById('question-05').selectedOptions[0].value;
+
+        
+        console.log('Question 1 Answers:');
+        console.log(document.getElementById('question-01').selectedOptions[0].text);
+        console.log(document.getElementById('question-01').selectedOptions[0].value);
+        console.log(question1Response);
+
+
+        console.log('Question 2 Answers:');
+        console.log(document.getElementById('question-02').selectedOptions[0].text);
+        console.log(document.getElementById('question-02').selectedOptions[0].value);
+        console.log(question2Response);
+
+
+        console.log('Question 3 Answers:');
+        console.log(document.getElementById('question-03').selectedOptions[0].text);
+        console.log(document.getElementById('question-03').selectedOptions[0].value);
+        console.log(question3Response);
+
+
+        console.log('Question 4 Answers:');
+        console.log(document.getElementById('question-04').selectedOptions[0].text);
+        console.log(document.getElementById('question-04').selectedOptions[0].value);
+        console.log(question4Response);
+
+
+        console.log('Question 5 Answers:');
+        console.log(document.getElementById('question-05').selectedOptions[0].text);
+        console.log(document.getElementById('question-05').selectedOptions[0].value);
+        console.log(question5Response);
+
+
+
+    let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0]);
+    let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[1]);
+    let question3Compatibility = 5 - Math.abs(question3Response - DESIRED_RESPONSE[2]);
+    let question4Compatibility = 5 - Math.abs(question4Response - DESIRED_RESPONSE[3]);
+    let question5Compatibility = 5 - Math.abs(question5Response - DESIRED_RESPONSE[4]);
+
+
+    console.log("c1="+question1Compatibility); 
+    console.log("c2="+question2Compatibility);
+    console.log("c3="+question3Compatibility);
+    console.log('c4='+question4Compatibility);
+    console.log('c5='+question5Compatibility);
+
+
+
+
+    //Calculate totalWeightedCompatibility  
+
+    let totalWeightedCompatibility = Math.abs((question1Compatibility)/2) + Math.abs((question2Compatibility)*2) + Math.abs((question3Compatibility)/2) + question4Compatibility + question5Compatibility;
+
+
+
+    //Convert totalWeightedCompatibility to percentage 
+
+    totalWeightedCompatibility *= 100 / MAXIMUM_SCORE;
+    totalWeightedCompatibility = Math.round(totalWeightedCompatibility);
+    console.log('twc='+ totalWeightedCompatibility);
+
+  
+    
+    document.getElementById('compatibility').innerHTML = 'Your weighted compatibility score is: '+ totalWeightedCompatibility +' out of 100';
+
+}
+</script>
+            
+            
+<style>
+    h1 {text-align: center;}
+    h1 {color: mediumvioletred}
+    h3 {text-align: center;}
+    h3 {color: mediumvioletred}
+    p {color: deeppink}
+    p {text-align: center;}
+    label {color: slateblue;}
+</style>
+        
+</body>
+
+
+</html>
+
